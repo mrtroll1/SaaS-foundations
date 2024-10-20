@@ -57,7 +57,7 @@ ENV DJANGO_DEBUG=${DJANGO_DEBUG}
 # whitenoise -> s3
 
 # set the Django default project name
-ARG PROJ_NAME="cfehome"
+ARG PROJ_NAME="mysaas"
 
 # create a bash script to run the Django project
 # this script will execute at runtime when
