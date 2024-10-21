@@ -1,0 +1,16 @@
+PIPELINE:
+
+0. Initialize a venv virtual environment
+1. Initialize a Django project vith minimal functionality
+    a. USe template inheritance
+2. Initialize git and link to remote
+    a. Use pre-made .gitignore for python
+3. Deploy to Railway with Docker 
+    a. Manage environment using decouple and Railway variables
+    b. Voila! website is online
+4. Integrate a PostgreSQL database with Neon
+    a. Voila! website pulls data from db
+5. Add staticfiles processing logic
+    a. Define directory structure in settings.py
+    b. Start a new Django app for defining custom manage.py commands
+        - vendor_pull run by docker downloads vendor staticfiles

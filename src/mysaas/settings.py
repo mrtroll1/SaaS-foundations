@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # My apps
+    "commando",
     "visits"
 ]
 
@@ -85,7 +86,7 @@ WSGI_APPLICATION = "mysaas.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 CONN_MAX_AGE = config("CONN_MAX_AGE", cast=int, default=30)
-DATABASE_URL = config("DATABASE_URL", cast=str) # can use default=None
+DATABASE_URL = config("DATABASE_URL", default=None) # can use default=None
 
 if DATABASE_URL is not None:
     import dj_database_url
@@ -134,6 +135,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_BASE_DIR = BASE_DIR / "staticfiles"
+STATICFILES_BASE_DIR.mkdir(parents=True, exist_ok=True)
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / "vendors"
 
 #source(s) for python manage.py collectstatic
