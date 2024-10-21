@@ -14,3 +14,4 @@ PIPELINE:
     a. Define directory structure in settings.py
     b. Start a new Django app for defining custom manage.py commands
         - vendor_pull run by docker downloads vendor staticfiles
+    c. Use whitenoise to serve django static files
