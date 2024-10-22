@@ -1,8 +1,29 @@
+# Django framework
 Django>=5.0,<5.2
+
+# WSGI HTTP Server 
 gunicorn
+
+# Managing environment
 python-decouple
+
+# To interact with Neon
 psycopg[binary]
 dj-database-url
+
+# Processing requests
 requests
+
+# Serving static files
 whitenoise
+
+# SSL certificates on local machine
 certifi
+
+# Authenticating users
+django-allauth[socialaccount]
+
+# Customizing authentication 
+django-allauth-ui
+django-widget-tweaks
+slippers

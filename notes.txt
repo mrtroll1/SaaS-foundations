@@ -2,7 +2,8 @@ PIPELINE:
 
 0. Initialize a venv virtual environment
 1. Initialize a Django project vith minimal functionality
-    a. USe template inheritance
+    a. Start a new Django app to count page visits
+    b. Use template inheritance
 2. Initialize git and link to remote
     a. Use pre-made .gitignore for python
 3. Deploy to Railway with Docker 
@@ -18,3 +19,9 @@ PIPELINE:
 6. Use gmail for django to send emails
     a. Create a gmail account and set app passwords
     b. Add necessary environment
+7. 'Manually' handle user authentication
+    a. Start a new Django app for managing authentication
+    b. Define basic login and registration views
+8. Implement Django AllAuth to handle user authentication 
+    a. Configure (add email verification)
+    b. Add a nicer UI
