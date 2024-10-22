@@ -16,15 +16,40 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config("DJANGO_DEBUG", cast=bool)
+
+# Email config
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS=config("EMAIL_USE_TLS", cast=bool, default=True)
+EMAIL_USE_SSL=config("EMAIL_USE_SSL", cast=bool, default=False)
+EMAIL_HOST=config("EMAIL_HOST", cast=str, default="smtp.gmail.com")
+EMAIL_PORT=config("EMAIL_PORT", cast=str, default="587")
+EMAIL_HOST_USER=config("EMAIL_HOST_USER", cast=str, default=None)
+EMAIL_HOST_PASSWORD=config("EMAIL_HOST_PASSWORD", cast=str, default=None)
+
+if DEBUG:
+    import os
+    import certifi
+    os.environ['SSL_CERT_FILE'] = certifi.where()
+
+# Staff
+ADMIN_NAME=config("ADMIN_NAME", cast=str, default=None)
+ADMIN_EMAIL=config("ADMIN_EMAIL", cast=str, default=None)
+
+MANAGERS=[]
+ADMINS=[]
+if all([ADMIN_NAME, ADMIN_EMAIL]):
+    ADMINS += [
+        (f'{ADMIN_NAME}', f'{ADMIN_EMAIL}')
+    ]
+    MANAGERS=ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("DJANGO_SECRET_KEY")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DJANGO_DEBUG", cast=bool)
 
 ALLOWED_HOSTS = [
     ".railway.app" #https://saas.prod.railway.app
