@@ -230,6 +230,16 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = config("SITE_ID", cast=int, default=3)
 ACCOUNT_LOGOUT_ON_GET = True
 
+# Csrf
+CSRF_TRUSTED_ORIGINS = [
+    config('DOMAIN_DEV', cast=str, default="http://127.0.0.1:800"),
+    'https://*.github.com'
+]
+
+# Cookies
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+
 # Logging
 
 # import logging
