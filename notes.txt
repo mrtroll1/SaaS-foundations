@@ -24,4 +24,11 @@ PIPELINE:
     b. Define basic login and registration views
 8. Implement Django AllAuth to handle user authentication 
     a. Configure (add email verification)
-    b. Add a nicer UI
+    b. Add a nicer UI [1]
+    c. Add GitHub social account auth [2]
+
+
+ERRORS:
+[1] - Conflicting styles of flowbite and allauth_ui, pain...
+[2] - Doesn't work (god I've tried to solve this one). 
+      -  Fixed by using OAuth github app instead of GitHub app

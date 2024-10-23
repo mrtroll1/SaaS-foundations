@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     # My apps
     "commando",
     "myauth",
@@ -80,6 +81,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    "allauth.socialaccount.providers.github",
     "widget_tweaks",
     "slippers",
 ]
@@ -158,13 +160,25 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {}
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        "VERIFIED_EMAIL": True,
+        # 'APP': {
+        #     'client_id': config("GITHUB_APP_CLIENT_ID", cast=str),
+        #     'secret': config("GITHUB_APP_SECRET_KEY", cast=str),
+        #     'key': ''
+        # }
+    }
+}
 
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_EMAIL_SUBJECT_PREFIX = "[SaaS-foundations] "
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -205,3 +219,38 @@ STORAGES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# social_app/settings.py
+
+AUTHENTICATION_BACKENDS = [
+
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+SITE_ID = config("SITE_ID", cast=int)
+ACCOUNT_LOGOUT_ON_GET = True
+
+# Logging
+
+# import logging
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',  # Change to INFO if you need less verbosity
+#         },
+#         'allauth': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',  # To debug allauth specific issues
+#             'propagate': True,
+#         },
+#     },
+# }
