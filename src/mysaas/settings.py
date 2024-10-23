@@ -227,7 +227,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-SITE_ID = config("SITE_ID", cast=int)
+SITE_ID = config("SITE_ID", cast=int, default=3)
 ACCOUNT_LOGOUT_ON_GET = True
 
 # Logging
