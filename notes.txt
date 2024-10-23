@@ -22,10 +22,14 @@ PIPELINE:
 7. 'Manually' handle user authentication
     a. Start a new Django app for managing authentication
     b. Define basic login and registration views
-8. Implement Django AllAuth to handle user authentication 
+8. Implement Django AllAuth to handle user authentication locally
     a. Configure (add email verification)
     b. Add a nicer UI [1]
     c. Add GitHub social account auth [2]
+9. Step 8 on a railway dev server
+    a. Separate OAuth app
+    b. Add a django site and manage environment
+    c. Allow github csrf tokens
 
 
 ERRORS:

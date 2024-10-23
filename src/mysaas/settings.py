@@ -236,9 +236,23 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.github.com'
 ]
 
-# Cookies
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+
+# Security:
+
+ENVIRONMENT = config("ENVIRONMENT", cast=str, default="development")
+
+if ENVIRONMENT == "development":
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 3600  
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+if ENVIRONMENT == "local":
+    SECURE_SSL_REDIRECT = False
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
 
 # Logging
 
