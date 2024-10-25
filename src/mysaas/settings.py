@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     "commando",
     # "myauth", # Use allauth instead
     "profiles",
+    "subscriptions",
     "visits",
     # Third-party apps
     "allauth_ui",

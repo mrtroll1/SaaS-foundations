@@ -17,7 +17,6 @@ def profile_list_view(request):
 def profile_detail_view(request, username=None):
     user = request.user
     profile_user_obj = get_object_or_404(User, username=username)
-    user_groups = profile_user_obj.groups.all()
     is_me = profile_user_obj == user
 
     context = {
@@ -27,7 +26,11 @@ def profile_detail_view(request, username=None):
         "sub_plan": None
     }
 
-    if user_groups.filter(name__icontains="basic").exists():
+    # user_groups = profile_user_obj.groups.all()
+    # if user_groups.filter(name__icontains="basic").exists():
+    #     context['sub_plan'] = 'Basic'
+
+    if profile_user_obj.has_perm("subscriptions.basic"):
         context['sub_plan'] = 'Basic'
 
     return render(request, "profiles/detail.html", context)

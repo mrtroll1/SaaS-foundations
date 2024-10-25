@@ -34,6 +34,8 @@ PIPELINE:
     a. Start a new Django app - profiles
     b. Define basic views with basic permissions
     c. Use user groups
+    d. Start a new django app to manage custom permissions - subscriptions
+    e. Subscriptions model allows to sync Groups and Permissions
 
 
 ERRORS:
