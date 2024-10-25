@@ -23,6 +23,11 @@ urlpatterns = [
     path("old-home-page", views.old_home_page_view),
     path("", views.home_view, name="home"),
     path("about/", views.about_view),
-    path("my-auth/", include("myauth.urls")),
+    # path("my-auth/", include("myauth.urls")), # Use allauth instead
     path('accounts/', include('allauth.urls')),
+    path("protected/", views.pw_protected_view),
+    path("protected/user-only", views.user_only_view),
+    path("protected/staff-only", views.staff_only_view),
+    path("no-permission/", views.no_permission_view),
+    path("profiles/", include("profiles.urls")),
 ]

@@ -26,10 +26,14 @@ PIPELINE:
     a. Configure (add email verification)
     b. Add a nicer UI [1]
     c. Add GitHub social account auth [2]
-9. Step 8 on a railway dev server
-    a. Separate OAuth app
+9. Step 8 but on a railway dev server
+    a. Create a separate OAuth app
     b. Add a django site and manage environment
-    c. Allow github csrf tokens
+    c. Allow github csrf tokens and ensure httpS
+10. Managing user profiles and authorization
+    a. Start a new Django app - profiles
+    b. Define basic views with basic permissions
+    c. Use user groups
 
 
 ERRORS:
