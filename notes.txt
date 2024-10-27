@@ -36,6 +36,16 @@ PIPELINE:
     c. Use user groups
     d. Start a new django app to manage custom permissions - subscriptions
     e. Subscriptions model allows to sync Groups and Permissions
+11. Getting started with Stripe
+    a. Create a Customer model, override django save method
+    b. Implement a billing.py helper
+    c. Use django-allauth signals to manage data consistency
+    d. Match Subscription(Price) models to Stripe Product, Price 
+12. Implement Stripe Checkout
+    a. Build a plan selection page
+    b. Define redirection views using Django sessions
+    c. Update the databse upon successfull purchase
+    
 
 
 ERRORS:

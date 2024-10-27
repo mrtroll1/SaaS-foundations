@@ -51,6 +51,8 @@ if all([ADMIN_NAME, ADMIN_EMAIL]):
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("DJANGO_SECRET_KEY")
 
+BASE_URL = config("BASE_URL", default=None)
+
 ALLOWED_HOSTS = [
     ".railway.app" #https://saas.prod.railway.app
 ]
@@ -72,12 +74,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    # My apps
-    "commando",
-    # "myauth", # Use allauth instead
-    "profiles",
-    "subscriptions",
-    "visits",
     # Third-party apps
     "allauth_ui",
     'allauth',
@@ -86,6 +82,14 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.github",
     "widget_tweaks",
     "slippers",
+    # My apps
+    "commando",
+    "customers",
+    # "myauth", # Use allauth instead
+    "profiles",
+    "subscriptions",
+    "visits",
+    
 ]
 
 MIDDLEWARE = [
