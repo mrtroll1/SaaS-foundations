@@ -141,7 +141,6 @@ if DATABASE_URL is not None:
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

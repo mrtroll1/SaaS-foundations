@@ -17,6 +17,7 @@
     {% endif %}
     {{ children }}
     {% if use_default_button == "true" %}
-        <button type="submit" class="my-3 btn btn-primary w-full">{{ button_text }}</button>
+        <button style="background-color: rgb(28, 100, 242); color: white;" 
+            type="submit" class="my-3 btn w-full">{{ button_text }}</button>
     {% endif %}
 </form>
