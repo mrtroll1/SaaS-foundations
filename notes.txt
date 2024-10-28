@@ -45,7 +45,8 @@ PIPELINE:
     a. Build a plan selection page
     b. Define redirection views using Django sessions
     c. Update the databse upon successfull purchase
-    
+    d. Manage subscriptions canceling
+    e. Define custom management commands and QuerySet methods
 
 
 ERRORS:

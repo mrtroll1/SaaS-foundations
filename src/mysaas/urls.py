@@ -35,6 +35,8 @@ urlpatterns = [
     path("pricing/", subscription_views.subscription_price_view, name="pricing"),
     path("pricing/<str:interval>/", subscription_views.subscription_price_view, name="pricing_interval"),
     path("checkout/price/<int:price_id>", checkout_views.product_price_redirect_view, name="sub-price-checkout"),
-    path("checkout/start", checkout_views.cheeckout_redirect_view, name="start-stripe-checkout"),
-    path("checkout/success", checkout_views.checkout_finalize_view, name="end-stripe-checkout")
+    path("checkout/start/", checkout_views.cheeckout_redirect_view, name="start-stripe-checkout"),
+    path("checkout/success/", checkout_views.checkout_finalize_view, name="end-stripe-checkout"),
+    path("accounts/billing/", subscription_views.user_subscription_view, name="user-subscription"),
+    path("accounts/billing/cancel/", subscription_views.user_subscription_cancel_view, name="user-subscription-cancel"),
 ]

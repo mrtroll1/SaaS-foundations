@@ -3,12 +3,9 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from subscriptions.models import Subscription
+import subscriptions.utils as subs_utils
 
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
-        qs = Subscription.objects.filter(active=True)
-        for obj in qs:
-            sub_perms = obj.permissions.all()
-            for group in obj.groups.all():
-                group.permissions.set(sub_perms)
+        subs_utils.sync_sub_group_permissions()

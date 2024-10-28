@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
+from django.contrib import messages
 
 from subscriptions.models import SubscriptionPrice, Subscription, UserSubscription
 
@@ -20,6 +21,7 @@ def product_price_redirect_view(request, price_id=None, *args, **kwargs):
 @login_required
 def cheeckout_redirect_view(request):
     checkout_subscription_price_id = request.session.get('checkout_subscription_price_id') 
+
     try: 
         obj = SubscriptionPrice.objects.get(id=checkout_subscription_price_id)
     except:
@@ -47,7 +49,11 @@ def cheeckout_redirect_view(request):
 
 def checkout_finalize_view(request):
     session_id = request.GET.get('session_id')
-    customer_id, price_id, sub_stripe_id = helpers.billing.get_checkout_customer_and_plan(session_id)
+    checkout_data = helpers.billing.get_checkout_customer_and_plan(session_id)
+    customer_id = checkout_data.pop('customer_id')
+    price_id = checkout_data.pop('price_id')
+    sub_stripe_id = checkout_data.pop('sub_stripe_id')
+    subscription_data = {**checkout_data}
 
     try:
         sub_obj = Subscription.objects.get(subscriptionprice__stripe_id=price_id)
@@ -60,11 +66,17 @@ def checkout_finalize_view(request):
         user_obj = None
 
     _user_sub_exists = False
+    updated_sub_options = {
+        "subscription": sub_obj,
+        "sub_stripe_id": sub_stripe_id,
+        "user_cancelled": False,
+        **subscription_data,
+    }
     try:
         _user_sub_obj = UserSubscription.objects.get(user=user_obj)
         _user_sub_exists = True
     except UserSubscription.DoesNotExist:
-        _user_sub_obj = UserSubscription.objects.create(user=user_obj, subscription=sub_obj, sub_stripe_id=sub_stripe_id)
+        _user_sub_obj = UserSubscription.objects.create(user=user_obj, **updated_sub_options)
     except:
         _user_sub_obj = None 
 
@@ -74,13 +86,16 @@ def checkout_finalize_view(request):
     if _user_sub_exists:
         # cancel old sub (on stripe)
         old_sub_stripe_id = _user_sub_obj.sub_stripe_id
-        if old_sub_stripe_id is not None:
-            helpers.billing.cancel_subscription(old_sub_stripe_id, reason="Auto ended upon new  membership.", raw=True)
+        same_stripe_id = old_sub_stripe_id == sub_stripe_id
+        if old_sub_stripe_id is not None and not same_stripe_id:
+            try:
+                helpers.billing.cancel_subscription(old_sub_stripe_id, reason="Auto ended upon new  membership.", raw=True)
+            except:
+                pass
         # add new sub
-        _user_sub_obj.subscription = sub_obj
-        _user_sub_obj.sub_stripe_id = sub_stripe_id
+        for k, v in updated_sub_options.items():
+            setattr(_user_sub_obj, k, v)
         _user_sub_obj.save()
-    
-    context = {}
 
-    return render(request, "checkout/success.html", context)
+    messages.success(request, "Your plan is now active!")
+    return redirect(_user_sub_obj.get_absolute_url())
