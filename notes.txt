@@ -47,6 +47,8 @@ PIPELINE:
     c. Update the databse upon successfull purchase
     d. Manage subscriptions canceling
     e. Define custom management commands and QuerySet methods
+13. GitHub Actions
+    a. Basic Django testing
 
 
 ERRORS:
