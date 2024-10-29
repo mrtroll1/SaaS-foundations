@@ -2,15 +2,16 @@ name: 2 - Test Django Basic
 
 on: 
   workflow_dispatch: 
-  push: 
-    branch:
-      - main
+  # push: 
+  #   branch:
+  #     - main
 
 jobs: 
   test:
     runs-on: ubuntu-latest 
     env: 
       DJANGO_DEBUG: 0 
+      DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
       # DJANGO_SECRET_KEY: not-good # but this will still work
     steps:
       - name: Chechout Code

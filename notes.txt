@@ -49,6 +49,10 @@ PIPELINE:
     e. Define custom management commands and QuerySet methods
 13. GitHub Actions
     a. Basic Django testing
+    b. Use Secrets
+    c. CONTINUE from 10:43
+14. Finalizing views and designs
+
 
 
 ERRORS:
