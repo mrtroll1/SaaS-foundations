@@ -9,7 +9,9 @@
     <h1>{{ page_title }}</h1>
         {% block content %}
 
-        {% include 'nav/navbar.html' %}
+        <header style="position: sticky; top: 0; z-index: 100;">
+            {% include 'nav/navbar.html' %}
+        </header>
         {% include 'base/messages.html' with messages=messages%}
         {% include 'dashboard/main.html' %}
         
