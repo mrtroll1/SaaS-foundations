@@ -1,9 +1,12 @@
 name: 1 - Hello World GitHub Actions
 
 on: # when to run
-  push: #git push
-    branch:
-      - main
+  workflow_dispatch: # to enable manual re-runs
+  # schedule: 
+  #   - cron: '30 15 * * *' # everyday at 15:30
+  # push: #git push
+  #   branch:
+  #     - main
 
 jobs: # what to run
   hello: # first job
