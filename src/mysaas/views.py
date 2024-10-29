@@ -28,6 +28,9 @@ def about_view(request):
     PageVisit.objects.create(path=request.path)
     return render(request, html_template, my_context)
 
+def contact_view(request):
+    return render(request, 'contact/contact.html')
+
 VALID_CODE = "abc123"
 
 def pw_protected_view(request, *args, **kwargs):

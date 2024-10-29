@@ -40,4 +40,5 @@ urlpatterns = [
     path("checkout/success/", checkout_views.checkout_finalize_view, name="end-stripe-checkout"),
     path("accounts/billing/", subscription_views.user_subscription_view, name="user-subscription"),
     path("accounts/billing/cancel/", subscription_views.user_subscription_cancel_view, name="user-subscription-cancel"),
+    path("contact/", views.contact_view, name="contact"),
 ]
