@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from landing import views as landing_views
 from subscriptions import views as subscription_views
 from checkouts import views as checkout_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("old-home-page", views.old_home_page_view),
-    path("", views.home_view, name="home"),
+    path("", landing_views.landind_page_view, name="home"),
     path("about/", views.about_view),
     # path("my-auth/", include("myauth.urls")), # Use allauth instead
     path('accounts/', include('allauth.urls')),
