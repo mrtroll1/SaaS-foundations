@@ -52,6 +52,8 @@ PIPELINE:
     b. Use Secrets
     c. CONTINUE from 10:43
 14. Finalizing views and designs
+    a. Download custom SaaS theme
+    b. To understand Tailwind w Django, follow another CFE course
 
 
 

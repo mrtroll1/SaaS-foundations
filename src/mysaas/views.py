@@ -29,7 +29,7 @@ def about_view(request):
     return render(request, html_template, my_context)
 
 def contact_view(request):
-    return render(request, 'contact/contact.html')
+    return render(request, 'contact/main.html')
 
 VALID_CODE = "abc123"
 
