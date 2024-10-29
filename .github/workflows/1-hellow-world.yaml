@@ -2,8 +2,8 @@ name: 1 - Hello World GitHub Actions
 
 on: # when to run
   push: #git push
-  branch:
-    - main
+    branch:
+      - main
 
 jobs: # what to run
   hello: # first job
