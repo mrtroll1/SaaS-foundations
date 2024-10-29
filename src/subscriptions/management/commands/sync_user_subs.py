@@ -22,15 +22,23 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         days_left = options.get('days_left')
         days_ago = options.get('days_ago')
-        clear_dnagling = options.get('clear_dangling')
+        day_start = options.get('day_start')
+        day_end = options.get('day_end')
+        clear_dangling = options.get('clear_dangling')
         sync_active = options.get('sync_active')
-        if clear_dnagling:
+        if clear_dangling:
             print('Clearing Stripe active dangling subs')
             subs_utils.clear_dangling_subs()
             print("Done")
         elif sync_active:
             print('Syncing active subs')
-            subs_utils.refresh_users_subscription(active_only=True, days_left=days_left, days_ago=days_ago)
+            subs_utils.refresh_users_subscription(
+                    active_only=True, 
+                    days_left=days_left, 
+                    days_ago=days_ago,
+                    day_start=day_start,
+                    day_end=day_end,
+                )
             print("Done")
         else:
             print('Specify one of the possible arguments:')
