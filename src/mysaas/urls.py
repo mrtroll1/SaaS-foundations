@@ -24,7 +24,7 @@ from checkouts import views as checkout_views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("old-home-page", views.old_home_page_view),
-    path("", landing_views.landind_page_view, name="home"),
+    path("", landing_views.landing_page_view, name="home"),
     path("about/", views.about_view),
     # path("my-auth/", include("myauth.urls")), # Use allauth instead
     path('accounts/', include('allauth.urls')),
