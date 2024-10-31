@@ -1,10 +1,10 @@
-<div class="flex items-start justify-center h-screen" style="padding-top: 100px;">
+<div class="flex items-start justify-center h-screen" style="padding-top: 200px;">
     <div class="text-center space-y-8">
         <!-- First Button -->
         <div class="flex justify-center">
             <button 
                 style="display: flex; align-items: center; justify-content: center; 
-                    width: 30vmax; height: 8vmax; font-size: 3vmax; 
+                    width: 24vmax; height: 6vmax; font-size: 2vmax; 
                     border: 1px solid grey; box-shadow: 0px 1px 5px black;"
                 onmouseover="this.style.backgroundColor='lightgray';" 
                 onmouseout="this.style.backgroundColor='white';"
@@ -21,7 +21,7 @@
         <div class="flex justify-center">
             <button 
                 style="display: flex; align-items: center; justify-content: center; 
-                    width: 30vmax; height: 8vmax; font-size: 3vmax; 
+                    width: 24vmax; height: 6vmax; font-size: 2vmax;
                     border: 1px solid grey; box-shadow: 0px 1px 5px black;
                     "
                 onmouseover="this.style.backgroundColor='lightgray';" 
@@ -38,28 +38,32 @@
         <!-- Container for horizontally centered buttons -->
         <div class="flex justify-center space-x-4">
             <!-- Third Button (left) with more rounded edges -->
-            <button 
-                style="display: flex; align-items: center; justify-content: center; 
-                    width: 20vmax; height: 6vmax; font-size: 2vmax; 
-                    border: 1px solid grey; box-shadow: 0px 1px 5px black;
-                    "
-                onmouseover="this.style.boxShadow='0px 2px 5px black';" 
-                onmouseout="this.style.boxShadow='0px 1px 5px black';"
-                type="button" class="text-white font-bold py-2 px-4 rounded-full">
-            Log In
-            </button>
+            <a href="{% url 'account_login' %}">
+                <button 
+                    style="display: flex; align-items: center; justify-content: center; 
+                        width: 12vmax; height: 4vmax; font-size: 1.5vmax; 
+                        border: 1px solid grey; box-shadow: 0px 1px 5px black;
+                        "
+                    onmouseover="this.style.boxShadow='0px 2px 5px black';" 
+                    onmouseout="this.style.boxShadow='0px 1px 5px black';"
+                    type="button" class="text-white font-bold py-2 px-4 rounded-full">
+                Log In
+                </button>
+            </a>
 
             <!-- Fourth Button (right) with more rounded edges -->
-            <button 
-                style="display: flex; align-items: center; justify-content: center; 
-                    width: 20vmax; height: 6vmax; font-size: 2vmax; 
-                    border: 1px solid grey; box-shadow: 0px 1px 5px black;
-                    "
-                onmouseover="this.style.boxShadow='0px 2px 5px black';" 
-                onmouseout="this.style.boxShadow='0px 1px 5px black';"
-                type="button" class="text-white font-bold py-2 px-4 rounded-full">
-            Sign Up
-            </button>
+            <a href="{% url 'account_signup' %}">
+                <button 
+                    style="display: flex; align-items: center; justify-content: center; 
+                        width: 12vmax; height: 4vmax; font-size: 1.5vmax; 
+                        border: 1px solid grey; box-shadow: 0px 1px 5px black;
+                        "
+                    onmouseover="this.style.boxShadow='0px 2px 5px black';" 
+                    onmouseout="this.style.boxShadow='0px 1px 5px black';"
+                    type="button" class="text-white font-bold py-2 px-4 rounded-full">
+                Sign Up
+                </button>
+            </a>
         </div>
     </div>
 </div>
