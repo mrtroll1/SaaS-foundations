@@ -30,3 +30,6 @@ slippers
 
 # Payments and subscriptions
 stripe
+
+# django forms
+django-phonenumber-field[phonenumbers]

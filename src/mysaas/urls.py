@@ -20,12 +20,13 @@ from . import views
 from landing import views as landing_views
 from subscriptions import views as subscription_views
 from checkouts import views as checkout_views
+from bookings import views as booking_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("old-home-page", views.old_home_page_view),
     path("", landing_views.landing_page_view, name="home"),
-    path("about/", views.about_view),
+    path("about/", views.about_view, name='about'),
     # path("my-auth/", include("myauth.urls")), # Use allauth instead
     path('accounts/', include('allauth.urls')),
     path("protected/", views.pw_protected_view),
@@ -41,4 +42,6 @@ urlpatterns = [
     path("accounts/billing/", subscription_views.user_subscription_view, name="user-subscription"),
     path("accounts/billing/cancel/", subscription_views.user_subscription_cancel_view, name="user-subscription-cancel"),
     path("contact/", views.contact_view, name="contact"),
+    path("book/", booking_views.booking_form_view, name="book"),
+    path("book/success", booking_views.booking_confirmation_view, name="booking-success")
 ]

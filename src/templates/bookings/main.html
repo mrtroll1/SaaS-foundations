@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block head_title %} Book - {{ block.super }} {% endblock head_title %}
+
+{% block content %}
+    {% include "bookings/form.html" %}
+{% endblock content %}

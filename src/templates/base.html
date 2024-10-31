@@ -7,9 +7,10 @@
   </head>
   <body>
     <header style="position: sticky; top: 0; z-index: 100;">
-      {% if request.user.is_authenticated %}
-        {% include 'nav/navbar.html' %}
-      {% endif %}
+      <!-- {% if request.user.is_authenticated %} -->
+      
+      <!-- {% endif %} -->
+      {% include 'nav/navbar.html' %}
     </header>
     {% include 'base/messages.html' with messages=messages%}
     <h1>{{ page_title }}</h1>
