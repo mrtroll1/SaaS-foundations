@@ -12,6 +12,7 @@ jobs:
     env: 
       DJANGO_DEBUG: 0 
       STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      STRIPE_TEST_OVERRIDE: 1
       NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
       NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
       NEON_DEV_BRANCH: 'dev' # usually would be prod, but using dev bc main was not synced to it
