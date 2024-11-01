@@ -9,7 +9,7 @@ import helpers.billing
 def refresh_users_subscription(
         user_ids=None, active_only=True, 
         verbose=True, days_ago=0, days_left=0,
-        day_start=0, day_end=0):
+        day_start=-1, day_end=-1):
     if active_only:
         qs = UserSubscription.objects.all().by_active()
     else:
@@ -20,7 +20,7 @@ def refresh_users_subscription(
         qs = qs.by_days_ago(days_ago=days_ago)
     if days_left > 0:
         qs = qs.by_days_left(days_left=days_left)
-    if day_start > 0 and day_end >= day_start:
+    if day_start > -1 and day_end >= day_start:
         qs = qs.by_range(day_start=day_start, day_end=day_end)
     
     complete_count = 0

@@ -51,6 +51,7 @@ PIPELINE:
     a. Basic Django testing
     b. Use Secrets
     c. Branch Neon using Actions
+    d. Scheduled Production Worker
 14. Finalizing views and designs
     a. Download custom SaaS theme
     b. To understand Tailwind w Django, follow another CFE course
