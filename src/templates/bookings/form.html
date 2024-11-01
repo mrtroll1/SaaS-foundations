@@ -13,6 +13,11 @@
                     {{ form.phone.label_tag }}
                     {{ form.phone }}
                 </div>
+
+                <div>
+                    {{ form.banya.label_tag }}
+                    {{ form.banya }}
+                </div>
                 
                 <div>
                     {{ form.num_guests.label_tag }}
@@ -29,9 +34,22 @@
                     {{ form.comment }}
                 </div>
             </div>
-            <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+            <div style="text-align: center;">
+                <button 
+                    type="submit"
+                    style="
+                        align-items: center;
+                        height: 5vmax; font-size: 1.5vmax;
+                        color: black; 
+                        margin-top: 20px;
+                        border: 1px solid grey; box-shadow: 0px 1px 5px black;
+                        "
+                    onmouseover="this.style.boxShadow='0px 2px 5px black';" 
+                    onmouseout="this.style.boxShadow='0px 1px 5px black';"
+                    type="button" class="w-full text-white font-bold py-2 px-4 rounded-full">
                 Book
-            </button>
+                </button>
+            </div>
         </form>
     </div>
 </section>
