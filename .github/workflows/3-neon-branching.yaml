@@ -44,7 +44,7 @@ jobs:
 
       - name: Database URL Env Value for new GH Actions branch  
         run: |
-          MY_NEON_CONNECTION_STRING = $(neonctl connection-string --branch "${{ env.NEON_GH_BRANCH }}" --project-id "${{ env.NEON_PROJECT_ID }}")
+          MY_NEON_CONNECTION_STRING=$(neonctl connection-string --branch "${{ env.NEON_GH_BRANCH }}" --project-id "${{ env.NEON_PROJECT_ID }}")
           echo "DATABASE_URL=$MY_NEON_CONNECTION_STRING" >> $GITHUB_ENV
 
       - name: Setup Django Secret Key
